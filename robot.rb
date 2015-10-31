@@ -1,4 +1,4 @@
-class Robot < ParentClass
+class Robot
   def initialize(args)
 
   end
