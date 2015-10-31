@@ -21,14 +21,21 @@ describe "#Robot" do
   end
 
   it "#move_forward does not advance the robot if at the end of the hallway" do
-    @test_robot.position  = Robot::FINAL_ENDING_POSITION
+    (Robot::INITIAL_STARTING_POSITION ... Robot::FINAL_ENDING_POSITION).each do
+      @test_robot.move_forward
+    end
+
+    expect(@test_robot.position).to eq(Robot::FINAL_ENDING_POSITION)
     @test_robot.move_forward
     expect(@test_robot.position).to eq(Robot::FINAL_ENDING_POSITION)
+
   end
 
   it "#move_backward retreats the robot by one" do
-    current_position      = 50
-    @test_robot.position  = current_position
+    (Robot::INITIAL_STARTING_POSITION ... Random.new.rand(10..20)).each do
+      @test_robot.move_forward
+    end
+    current_position = @test_robot.position
     @test_robot.move_backward
     expect(@test_robot.position).to eq(current_position - Robot::POSITION_MOVE_DISTANCE)
   end

@@ -1,5 +1,5 @@
 class Robot
-  attr_accessor :name, :position
+  attr_reader :name, :position
 
   INITIAL_STARTING_POSITION = 1
   FINAL_ENDING_POSITION     = 100
