@@ -24,6 +24,7 @@ class Robot
   end
 
   def add_button_to_press(button)
+    return unless button.is_a?(Button)
     @buttons_to_press << button
   end
 

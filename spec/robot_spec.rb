@@ -54,10 +54,16 @@ describe "#Robot" do
     expect(@test_robot.position).to eq(Robot::INITIAL_STARTING_POSITION)
   end
 
-  it "#add_button_to_press adds an integer that represents a button for the robot to press" do
+  it "#add_button_to_press adds a Button for the robot to press" do
     expect(@test_robot.buttons_to_press).to be_empty
-    button = 5
+    button = Button.new(5)
     @test_robot.add_button_to_press(button)
     expect(@test_robot.buttons_to_press).to include(button)
+  end
+
+  it "#add_button_to_press only accepts #Button objects" do
+    button = 5
+    @test_robot.add_button_to_press(button)
+    expect(@test_robot.buttons_to_press).to be_empty
   end
 end
