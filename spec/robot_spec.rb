@@ -6,12 +6,16 @@ describe "#Robot" do
     @test_robot = Robot.new("Batman")
   end
 
-  it "must be given a name" do
+  it "has a name" do
     expect(@test_robot.name).to eq("Batman")
   end
 
   it "starting position is 1" do
     expect(@test_robot.position).to eq(Robot::INITIAL_STARTING_POSITION)
+  end
+
+  it "initially has no buttons to press" do
+    expect(@test_robot.buttons_to_press).to be_empty
   end
 
   it "#move_forward advances the robot by one only if not at position 100" do
@@ -48,5 +52,12 @@ describe "#Robot" do
   it "#push_button does not change the Robot's position" do
     @test_robot.push_button
     expect(@test_robot.position).to eq(Robot::INITIAL_STARTING_POSITION)
+  end
+
+  it "#add_button_to_press adds an integer that represents a button for the robot to press" do
+    expect(@test_robot.buttons_to_press).to be_empty
+    button = 5
+    @test_robot.add_button_to_press(button)
+    expect(@test_robot.buttons_to_press).to include(button)
   end
 end
