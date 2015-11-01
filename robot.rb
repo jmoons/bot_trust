@@ -11,11 +11,15 @@ class Robot
   end
 
   def move_forward
-    @position += 1 unless @position == FINAL_ENDING_POSITION
+    @position += POSITION_MOVE_DISTANCE unless @position == FINAL_ENDING_POSITION
   end
 
   def move_backward
-    @position -= 1 unless @position == INITIAL_STARTING_POSITION
+    @position -= POSITION_MOVE_DISTANCE unless @position == INITIAL_STARTING_POSITION
+  end
+
+  def push_button
+    # Nothing to do here
   end
 
 end

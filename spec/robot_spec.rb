@@ -44,4 +44,9 @@ describe "#Robot" do
     @test_robot.move_backward
     expect(@test_robot.position).to eq(Robot::INITIAL_STARTING_POSITION)
   end
+
+  it "#push_button does not change the Robot's position" do
+    @test_robot.push_button
+    expect(@test_robot.position).to eq(Robot::INITIAL_STARTING_POSITION)
+  end
 end
