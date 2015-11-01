@@ -45,3 +45,12 @@ Large dataset
 
 1 ≤ T ≤ 100.
 1 ≤ N ≤ 100.
+
+Sample
+
+|Input | Output
+|-----|-----
+| 3 |
+| 4 O 2 B 1 B 2 O 4 | Case #1: 6
+| 3 O 5 O 8 B 100 | Case #2: 100
+| 2 B 2 B 1 | Case #3: 4
