@@ -1,8 +1,3 @@
-# Test case takes in a string representation of the test from the test conductor
-# Test case shall contain collection of robots with buttons remaining
-# Test case shall contain collection of robots with no buttons remaining
-# Test case shall keep current time of test case
-# 4 O 2 B 1 B 2 O 4
 require './robot.rb'
 require './button.rb'
 
