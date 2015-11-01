@@ -36,10 +36,10 @@ class TestCase
       target_button               = target_button.to_i
 
       if ( robots.has_key?(target_robot) )
-        robots[target_robot].add_button_to_press(Button.new(target_button))
+        robots[target_robot].add_button_to_press( Button.new(target_button) )
       else
         new_robot = Robot.new(target_robot)
-        new_robot.add_button_to_press(Button.new(target_button))
+        new_robot.add_button_to_press( Button.new(target_button) )
         robots[target_robot] = new_robot
       end
     end
