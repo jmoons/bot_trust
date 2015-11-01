@@ -13,14 +13,14 @@ For example, let's consider the following button sequence:
 
 Here, O 2 means button 2 in Orange's hallway, B 1 means button 1 in Blue's hallway, and so on. The robots can push this sequence of buttons in 6 seconds using the strategy shown below:
 
-> Time | Orange           | Blue
-> -----+------------------+-----------------
->   1  | Move to button 2 | Stay at button 1
->   2  | Push button 2    | Stay at button 1
->   3  | Move to button 3 | Push button 1
->   4  | Move to button 4 | Move to button 2
->   5  | Stay at button 4 | Push button 2
->   6  | Push button 4    | Stay at button 2
+Time | Orange           | Blue
+-----+------------------+-----------------
+  1  | Move to button 2 | Stay at button 1
+  2  | Push button 2    | Stay at button 1
+  3  | Move to button 3 | Push button 1
+  4  | Move to button 4 | Move to button 2
+  5  | Stay at button 4 | Push button 2
+  6  | Push button 4    | Stay at button 2
 Note that Blue has to wait until Orange has completely finished pushing O 2 before it can start pushing B 1.
 Input
 
