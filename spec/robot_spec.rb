@@ -1,4 +1,5 @@
 require_relative '../robot'
+require_relative '../button'
 
 describe "#Robot" do
 
@@ -52,6 +53,20 @@ describe "#Robot" do
   it "#push_button does not change the Robot's position" do
     @test_robot.push_button
     expect(@test_robot.position).to eq(Robot::INITIAL_STARTING_POSITION)
+  end
+
+  it "#push_button moves the first button from buttons_to_press to buttons_pressed" do
+    button1 = Button.new(1)
+    button2 = Button.new(2)
+
+    @test_robot.add_button_to_press( button1 )
+    @test_robot.add_button_to_press( button2 )
+    expect(@test_robot.buttons_to_press).to contain_exactly( button1, button2 )
+
+    @test_robot.push_button
+
+    expect(@test_robot.buttons_to_press).to contain_exactly( button2 )
+    expect(@test_robot.buttons_pressed).to contain_exactly( button1 )
   end
 
   it "#add_button_to_press adds a Button for the robot to press" do

@@ -1,5 +1,5 @@
 class Robot
-  attr_reader :name, :position, :buttons_to_press
+  attr_reader :name, :position, :buttons_to_press, :buttons_pressed
 
   INITIAL_STARTING_POSITION = 1
   FINAL_ENDING_POSITION     = 100
@@ -9,6 +9,7 @@ class Robot
     @position         = INITIAL_STARTING_POSITION
     @name             = name
     @buttons_to_press = []
+    @buttons_pressed  = []
   end
 
   def move_forward
@@ -20,7 +21,7 @@ class Robot
   end
 
   def push_button
-    # Nothing to do here
+    @buttons_pressed << @buttons_to_press.shift
   end
 
   def add_button_to_press(button)
