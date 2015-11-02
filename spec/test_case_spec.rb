@@ -21,6 +21,10 @@ describe "#TestCase" do
     expect(@test_case.robots.length).to eq(2)
   end
 
+  it "#populate_test_case_robots creates correct number of robot button presses" do
+    expect(@test_case.robots_in_button_press_order.length).to eq(4)
+  end
+
   it "#populate_test_case_robots is case sensitive for names when creating robots" do
     three_robot_test_case_string  = "5 O 2 B 1 o 16 B 2 O 4"
     three_robot_test_case         = TestCase.new(three_robot_test_case_string)
@@ -51,6 +55,7 @@ describe "#TestCase" do
     expect(@test_case.complete?).to be false
 
     @test_case.robots.each do |robot|
+      robot.allowed_to_push_button
       (1 .. robot.buttons_to_press.length).each do |button_to_press_iteration|
         robot.push_button
       end
