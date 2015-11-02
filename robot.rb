@@ -12,6 +12,23 @@ class Robot
     @buttons_pressed  = []
   end
 
+  def perform_action
+    return if @buttons_to_press.empty?
+
+    current_button_to_press = @buttons_to_press.first.name
+
+    if ( @position == current_button_to_press )
+      push_button
+    elsif( @position > current_button_to_press )
+      move_backward
+    elsif( @position < current_button_to_press )
+      move_forward
+    else
+      # Nothing to do here
+    end
+
+  end
+
   def move_forward
     @position += POSITION_MOVE_DISTANCE unless @position == FINAL_ENDING_POSITION
   end

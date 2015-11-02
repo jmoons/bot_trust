@@ -81,4 +81,42 @@ describe "#Robot" do
     @test_robot.add_button_to_press(button)
     expect(@test_robot.buttons_to_press).to be_empty
   end
+
+  it "#perform_action will advance the robot to a button that is ahead" do
+    button = Button.new(5)
+    @test_robot.add_button_to_press(button)
+
+    expect(@test_robot.position).to equal(Robot::INITIAL_STARTING_POSITION)
+    expect(@test_robot).to receive(:move_forward)
+    @test_robot.perform_action
+
+  end
+
+  it "#perform_action will retreat the robot to a button that is behind" do
+    button_position = 5
+    button          = Button.new(button_position)
+    @test_robot.add_button_to_press(button)
+
+    (Robot::INITIAL_STARTING_POSITION .. button_position).each do |iterator|
+      @test_robot.move_forward
+    end
+
+    expect(@test_robot.position).to equal( button_position + 1 )
+    expect(@test_robot).to receive(:move_backward)
+    @test_robot.perform_action
+
+  end
+
+  it "#perform_action will call #push_button when robot is on a button" do
+    button = Button.new(1)
+    @test_robot.add_button_to_press(button)
+
+    expect(@test_robot.position).to equal(Robot::INITIAL_STARTING_POSITION)
+    expect(@test_robot).to receive(:push_button)
+    debug = @test_robot.perform_action
+
+  end
+
+  it "#perform_action will simply return when robot has no more buttons to push" do
+  end
 end
