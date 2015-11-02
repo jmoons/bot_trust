@@ -15,6 +15,10 @@ class TestCase
     @finished_robots                  = []
   end
 
+  def complete?
+    @robots.all? { |robot| robot.buttons_to_press.length == 0 }
+  end
+
   private
 
   def normalize_test_case_description(raw_test_case_description)

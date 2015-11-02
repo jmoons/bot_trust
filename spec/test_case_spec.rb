@@ -42,4 +42,20 @@ describe "#TestCase" do
     expect(test_case_orange_buttons).to eq( @truth_data_orange_robot[:button_names] )
     expect(test_case_blue_buttons).to eq( @truth_data_blue_robot[:button_names] )
   end
+
+  it "#complete? will return false if any robot in the test has buttons to push" do
+    expect(@test_case.complete?).to be false
+  end
+
+  it "#complete? will return true if all robots in the test have no buttons to push" do
+    expect(@test_case.complete?).to be false
+
+    @test_case.robots.each do |robot|
+      (1 .. robot.buttons_to_press.length).each do |button_to_press_iteration|
+        robot.push_button
+      end
+    end
+
+    expect(@test_case.complete?).to be true
+  end
 end
