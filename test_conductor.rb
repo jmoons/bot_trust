@@ -1,7 +1,5 @@
-# 1) Parse the input file and create collection of Test Cases
-# 2) For each TestCase, query if complete, if not continue test
-# 3) Print out each test's time
 require './test_case.rb'
+
 class TestConductor
 
   VALID_TEST_CASE_EXPRESSION =  /[a-zA-Z]+/
@@ -9,8 +7,8 @@ class TestConductor
   attr_reader :test_cases
 
   def initialize(input_file)
-    @input_file               = input_file
-    @test_cases               = []
+    @input_file = input_file
+    @test_cases = []
 
     initialize_test_cases
 
