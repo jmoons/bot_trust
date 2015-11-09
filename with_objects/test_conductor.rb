@@ -1,8 +1,9 @@
-require './test_case.rb'
+require './bot_trust_helper'
+require './robot'
+require './button'
+require './test_case'
 
 class TestConductor
-
-  VALID_TEST_CASE_EXPRESSION =  /[a-zA-Z]+/
 
   attr_reader :test_cases
 
@@ -47,7 +48,7 @@ class TestConductor
 
   def initialize_test_cases
     @input_file.each_line do |input_file_line|
-      next unless VALID_TEST_CASE_EXPRESSION.match(input_file_line)
+      next unless BotTrustHelper::VALID_TEST_CASE_EXPRESSION.match(input_file_line)
       @test_cases << TestCase.new(input_file_line)
     end
     @input_file.close

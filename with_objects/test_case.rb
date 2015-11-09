@@ -1,6 +1,3 @@
-require './robot.rb'
-require './button.rb'
-
 class TestCase
 
   attr_reader :normalized_test_case_description, :robots, :time, :robots_in_button_press_order
@@ -79,6 +76,11 @@ class TestCase
 
       target_robot, target_button = robot_button_pair.split
       target_button               = target_button.to_i
+
+      if ( !(BotTrustHelper::INITIAL_STARTING_POSITION .. BotTrustHelper::FINAL_ENDING_POSITION).include?(target_button) )
+        puts "Not allowing Robot Button: #{robot_button_pair.inspect} as button exceed's test hallway limits of #{BotTrustHelper::INITIAL_STARTING_POSITION} to #{BotTrustHelper::FINAL_ENDING_POSITION}"
+        next
+      end
 
       if ( robots.has_key?(target_robot) )
         robots[target_robot].add_button_to_press( Button.new(target_button) )
