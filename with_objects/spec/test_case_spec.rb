@@ -47,6 +47,16 @@ describe "#TestCase" do
     expect(test_case_blue_buttons).to eq( @truth_data_blue_robot[:button_names] )
   end
 
+  it "#populate_test_case_robots will not allow a button outside of the hallway" do
+    invalid_button_test_case  = "3 B 1 O 1 O 2 B 101"
+    test_case                 = TestCase.new(invalid_button_test_case)
+
+    blue_robot          = test_case.robots_in_button_press_order.first
+    blue_robot_buttons  = blue_robot.buttons_to_press.map { |button| button.name }
+
+    expect(blue_robot_buttons).to eq([1])
+  end
+
   it "#complete? will return false if any robot in the test has buttons to push" do
     expect(@test_case.complete?).to be false
   end
